@@ -15,6 +15,7 @@ services:
       - mandu-mysql-service
     links:
       - mandu-php-service
+
   mandu-php-service:
     image: php:8.0-fpm
     container_name: mandu-php-service
@@ -29,9 +30,10 @@ services:
       PMA_HOST: mandu-mysql-service
       PMA_USERE: mandu
       PMA_PASSWORD: mandu
+
   mandu-mysql-service:
-    image: mysql
     platform: linux/x86_64
+    image: mysql:5.7
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
